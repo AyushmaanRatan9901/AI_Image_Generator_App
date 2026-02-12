@@ -1,14 +1,14 @@
 import express from "express";
-import http from "http";
 import cors from "cors";
+import http from "http";
 import dotenv from "dotenv";
-import connectDB from "./config/db.js";
-
-import authRoutes from "./routes/authRoutes.js";
-import promptRoutes from "./routes/promptRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
+import connectDB from "./Config/db.js";
+import authRoutes from "./Routes/authRoutes.js";
+import chatRoutes from "./Routes/chatRoutes.js";
 
 dotenv.config();
+
+// Connect to Databse
 connectDB();
 
 const app = express();
@@ -16,18 +16,20 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//Use Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/prompts", promptRoutes);
-app.use("/api/users", userRoutes);
 
-app.get("/", (req, res) => res.send("Server is Running 🚀"));
-app.get("/health", (req, res) =>
-  res.json({ status: "ok", message: "Backend is connected 🚀" }),
-);
+// image Routes
+app.use("/api/chats", chatRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Server is Running");
+});
 
 const PORT = process.env.PORT || 3000;
+
 const server = http.createServer(app);
 
-server.listen(PORT, "0.0.0.0", () =>
-  console.log("Server running on port", PORT),
-);
+server.listen(PORT, () => {
+  console.log("Server is Running on :", `http://localhost:${PORT}/`);
+});
