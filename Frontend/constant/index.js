@@ -1,6 +1,5 @@
-// export const API_URL = "http://192.168.29.235:3000";
-export const API_URL = "https://live-ai-image.onrender.com";
+export const API_URL = "ENTER_YOUR_API_URL_HERE";
 
-// AI-Iamge Generator KEYS
-export const WORKER_URL = "https://image-api.ayushmaanratan.workers.dev/";
-export const WORKER_API_KEY = "asd6d7ad88sdf6678sdfsdfsd86";
+export const WORKER_URL = "ENTER_YOUR_CLOUDFLARE_WORKER_URL_HERE";
+
+export const WORKER_API_KEY = "ENTER_YOUR_WORKER_API_KEY_HERE";
